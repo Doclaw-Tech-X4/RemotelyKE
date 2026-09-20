@@ -1,0 +1,23 @@
+lockfileVersion: '9.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+importers:
+
+  .:
+    dependencies:
+      '@pnpm/exe':
+        specifier: file:/tmp/tmp.xecyctcsfr
+        version: file:../../../../../../../../../tmp/tmp.xecyctcsfr
+
+packages:
+
+  '@pnpm/exe@file:../../../../../../../../../tmp/tmp.xecyctcsfr':
+    resolution: {directory: ../../../../../../../../../tmp/tmp.xecyctcsfr, type: directory}
+    hasBin: true
+
+snapshots:
+
+  '@pnpm/exe@file:../../../../../../../../../tmp/tmp.xecyctcsfr': {}

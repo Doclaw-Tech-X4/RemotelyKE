@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2322c55e'><path d='M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z'/></svg>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#060a15" />
+    <title>RemotelyKE | Remote Micro-Task & Online Job Platform</title>
+
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Non-blocking Google Fonts with fallback -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" media="print" onload="this.media='all'">
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap">
+    </noscript>
+
+    <!-- Inline Critical Styles to avoid any FOUC -->
+    <style>
+      body {
+        margin: 0;
+        background-color: #060a15;
+        color: #f1f5f9;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      }
+      #initial-loader {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: #060a15;
+        z-index: 9999;
+        transition: opacity 0.3s ease;
+      }
+      .loader-spinner {
+        width: 44px;
+        height: 44px;
+        border: 3px solid rgba(34, 197, 94, 0.15);
+        border-top-color: #22c55e;
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+      }
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+    </style>
+  </head>
+  <body class="bg-[#060a15] text-slate-100 min-h-screen selection:bg-brand-500 selection:text-black antialiased overflow-x-hidden">
+    <div id="root">
+      <div id="initial-loader">
+        <div class="loader-spinner"></div>
+        <div style="margin-top: 16px; font-weight: 700; font-size: 14px; letter-spacing: 0.05em; color: #22c55e;">
+          REMOTELY<span style="color: #ffffff;">KE</span>
+        </div>
+        <div style="margin-top: 6px; font-size: 11px; color: #64748b;">
+          Loading remote job platform...
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
