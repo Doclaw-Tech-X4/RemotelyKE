@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ShieldCheck, CheckCircle2, Zap, Smartphone, Sparkles, HelpCircle, Lock } from 'lucide-react';
+import { ShieldCheck, CheckCircle2, Zap, Smartphone, Sparkles, HelpCircle, Lock, AlertTriangle } from 'lucide-react';
 import PaystackButton from './PaystackButton';
 
 /**
@@ -60,6 +60,14 @@ export default function RegistrationPaywall({
             <div className="text-slate-400">Referral ID:</div>
             <div className="font-mono font-bold text-brand-400">{profile?.referral_code}</div>
           </div>
+        </div>
+
+        {/* Pending Account Notice */}
+        <div className="mt-3 p-3 rounded-xl bg-amber-950/40 border border-amber-500/30 text-[11px] text-amber-200 flex items-start space-x-2">
+          <AlertTriangle className="w-3.5 h-3.5 text-amber-400 flex-shrink-0 mt-0.5" />
+          <span>
+            Your account is <strong>pending activation</strong> — you cannot sign in again or access the platform until this one-time KSH 300 registration fee is paid.
+          </span>
         </div>
 
         {/* Pricing Box */}

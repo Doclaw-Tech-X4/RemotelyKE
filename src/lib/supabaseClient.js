@@ -146,6 +146,7 @@ class MockSupabaseClient {
 
       const newUserId = 'user-' + Math.random().toString(36).substring(2, 9);
       const referralCode = 'KE-' + Math.random().toString(36).substring(2, 8).toUpperCase();
+      const isAdminUser = isAdminEmail(email);
 
       // Calculate 48h deadline from right now
       const now = new Date();
@@ -160,8 +161,8 @@ class MockSupabaseClient {
         referred_by: referred_by || null,
         coins_balance: 0,
         wallet_balance: 0.00,
-        registration_paid: false,
-        training_paid: false,
+        registration_paid: isAdminUser,
+        training_paid: isAdminUser,
         is_banned: false,
         ban_reason: null,
         training_deadline: deadline,
@@ -227,6 +228,15 @@ class MockSupabaseClient {
         return {
           data: { user: null, session: null },
           error: new Error(`ACCOUNT SUSPENDED: ${profile.ban_reason || '48-Hour training window expired.'}`)
+        };
+      }
+
+      // Block non-admin users whose KSH 300 registration fee has not been paid.
+      // Registration is only "successful" once the fee is settled.
+      if (!profile.registration_paid && !isAdminEmail(profile.email)) {
+        return {
+          data: { user: null, session: null },
+          error: new Error('ACCOUNT PENDING ACTIVATION: Registration is only complete after the one-time KSH 300 registration fee is paid. Complete your registration payment to activate this account.')
         };
       }
 

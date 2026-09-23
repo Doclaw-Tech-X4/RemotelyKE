@@ -121,6 +121,12 @@ export default function AuthModal({
           throw new Error(`ACCESS PERMANENTLY SUSPENDED: ${resolvedProfile.ban_reason || '48-hour training window expired.'}`);
         }
 
+        // Block non-admin users who have not completed the KSH 300 registration fee.
+        // The account is treated as pending until the registration payment is settled.
+        if (resolvedProfile && !isAdminEmail(data.user.email) && !resolvedProfile.registration_paid) {
+          throw new Error('ACCOUNT PENDING ACTIVATION: Registration is only complete after the one-time KSH 300 registration fee is paid. Complete your registration payment to activate this account.');
+        }
+
         if (onAuthSuccess) onAuthSuccess(resolvedProfile);
         onClose();
       }
